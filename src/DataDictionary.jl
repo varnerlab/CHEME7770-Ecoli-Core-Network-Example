@@ -21,26 +21,191 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 # ----------------------------------------------------------------------------------- #
-#
+
+function maximize_cellmass_data_dictionary(time_start,time_stop,time_step)
+
+	# Get the default data_dictionary -
+	data_dictionary = DataDictionary(time_start,time_stop,time_step)
+
+	# setup the obj -
+	objective_coefficient_array = data_dictionary["objective_coefficient_array"]
+	objective_coefficient_array[24] = -1.0
+
+	# Default flux bounds array -
+	default_flux_bounds_array = data_dictionary["default_flux_bounds_array"]
+	default_flux_bounds_array[21,2] = 0.0
+
+	# setup exchange array -
+	species_bounds_array = data_dictionary["species_bounds_array"]
+	exchange_array = [
+		0.0	0.0	;	# 73 M_ac_b
+		0.0	0.0	;	# 74 M_acald_b
+		0.0	0.0	;	# 75 M_akg_b
+		0.0	1.0	;	# 76 M_co2_b
+		0.0	0.0	;	# 77 M_etoh_b
+		0.0	1.0	;	# 78 M_for_b
+		0.0	1.0	;	# 79 M_fru_b
+		0.0	1.0	;	# 80 M_fum_b
+		-1.0	0.0	;	# 81 M_glc_D_b
+		0.0	0.0	;	# 82 M_gln_L_b
+		0.0	0.0	;	# 83 M_glu_L_b
+		-1.0	1.0	;	# 84 M_h2o_b
+		-1.0	1.0	;	# 85 M_h_b
+		0.0	0.0	;	# 86 M_lac_D_b
+		0.0	0.0	;	# 87 M_mal_L_b
+		-1.0	1.0	;	# 88 M_nh4_b
+		-1.0	1.0	;	# 89 M_o2_b
+		-1.0	1.0	;	# 90 M_pi_b
+		0.0	0.0	;	# 91 M_pyr_b
+		0.0	0.0	;	# 92 M_succ_b
+	]
+
+	# how many unbalanced species do we have?
+	offset = 72
+	(number_of_exchange_species,number_of_bounds) = size(exchange_array)
+	for exchange_index = 1:number_of_exchange_species
+
+		bounds_row_index = offset+exchange_index
+
+		# update the lower bound -
+		species_bounds_array[bounds_row_index,1] = exchange_array[exchange_index,1]
+
+		# update the upper bound -
+		species_bounds_array[bounds_row_index,2] = exchange_array[exchange_index,2]
+	end
+
+	return data_dictionary
+end
+
+
+function maximize_atp_data_dictionary(time_start,time_stop,time_step)
+
+	# Get the default data_dictionary -
+	data_dictionary = DataDictionary(time_start,time_stop,time_step)
+
+	# setup the obj -
+	objective_coefficient_array = data_dictionary["objective_coefficient_array"]
+	objective_coefficient_array[20] = -1.0
+
+	# Default flux bounds array -
+	default_flux_bounds_array = data_dictionary["default_flux_bounds_array"]
+	default_flux_bounds_array[21,2] = 0.0
+
+	# setup exchange array -
+	species_bounds_array = data_dictionary["species_bounds_array"]
+	exchange_array = [
+		0.0	0.0	;	# 73 M_ac_b
+		0.0	0.0	;	# 74 M_acald_b
+		0.0	0.0	;	# 75 M_akg_b
+		0.0	1.0	;	# 76 M_co2_b
+		0.0	0.0	;	# 77 M_etoh_b
+		0.0	1.0	;	# 78 M_for_b
+		0.0	1.0	;	# 79 M_fru_b
+		0.0	1.0	;	# 80 M_fum_b
+		-1.0	0.0	;	# 81 M_glc_D_b
+		0.0	0.0	;	# 82 M_gln_L_b
+		0.0	0.0	;	# 83 M_glu_L_b
+		-1.0	1.0	;	# 84 M_h2o_b
+		-1.0	1.0	;	# 85 M_h_b
+		0.0	0.0	;	# 86 M_lac_D_b
+		0.0	0.0	;	# 87 M_mal_L_b
+		-1.0	1.0	;	# 88 M_nh4_b
+		-1.0	1.0	;	# 89 M_o2_b
+		-1.0	1.0	;	# 90 M_pi_b
+		0.0	0.0	;	# 91 M_pyr_b
+		0.0	0.0	;	# 92 M_succ_b
+	]
+
+	# how many unbalanced species do we have?
+	offset = 72
+	(number_of_exchange_species,number_of_bounds) = size(exchange_array)
+	for exchange_index = 1:number_of_exchange_species
+
+		bounds_row_index = offset+exchange_index
+
+		# update the lower bound -
+		species_bounds_array[bounds_row_index,1] = exchange_array[exchange_index,1]
+
+		# update the upper bound -
+		species_bounds_array[bounds_row_index,2] = exchange_array[exchange_index,2]
+	end
+
+	return data_dictionary
+end
+
+function maximize_acetate_data_dictionary(time_start,time_stop,time_step)
+
+	# Get the default data_dictionary -
+	data_dictionary = DataDictionary(time_start,time_stop,time_step)
+
+	# setup the obj -
+	objective_coefficient_array = data_dictionary["objective_coefficient_array"]
+	objective_coefficient_array[35] = -1.0
+
+	# Default flux bounds array -
+	default_flux_bounds_array = data_dictionary["default_flux_bounds_array"]
+
+	# setup exchange array -
+	species_bounds_array = data_dictionary["species_bounds_array"]
+	exchange_array = [
+		0.0	1.0	;	# 73 M_ac_b
+		0.0	0.0	;	# 74 M_acald_b
+		0.0	0.0	;	# 75 M_akg_b
+		0.0	1.0	;	# 76 M_co2_b
+		0.0	0.0	;	# 77 M_etoh_b
+		0.0	1.0	;	# 78 M_for_b
+		0.0	1.0	;	# 79 M_fru_b
+		0.0	1.0	;	# 80 M_fum_b
+		-1.0	0.0	;	# 81 M_glc_D_b
+		-1.0	0.0	;	# 82 M_gln_L_b
+		0.0	0.0	;	# 83 M_glu_L_b
+		-1.0	1.0	;	# 84 M_h2o_b
+		-1.0	1.0	;	# 85 M_h_b
+		0.0	0.0	;	# 86 M_lac_D_b
+		0.0	0.0	;	# 87 M_mal_L_b
+		-1.0	1.0	;	# 88 M_nh4_b
+		-1.0	1.0	;	# 89 M_o2_b
+		-1.0	1.0	;	# 90 M_pi_b
+		0.0	0.0	;	# 91 M_pyr_b
+		0.0	0.0	;	# 92 M_succ_b
+	]
+
+	# how many unbalanced species do we have?
+	offset = 72
+	(number_of_exchange_species,number_of_bounds) = size(exchange_array)
+	for exchange_index = 1:number_of_exchange_species
+
+		bounds_row_index = offset+exchange_index
+
+		# update the lower bound -
+		species_bounds_array[bounds_row_index,1] = exchange_array[exchange_index,1]
+
+		# update the upper bound -
+		species_bounds_array[bounds_row_index,2] = exchange_array[exchange_index,2]
+	end
+
+	return data_dictionary
+end
+
 # ----------------------------------------------------------------------------------- #
 # Function: DataDictionary
 # Description: Holds simulation and model parameters as key => value pairs in a Julia Dict()
-# Generated on: 2017-03-25T18:39:59.173
+# Generated on: 2017-03-28T11:09:30.882
 #
 # Input arguments:
-# time_start::Float64 => Simulation start time value (scalar) 
-# time_stop::Float64 => Simulation stop time value (scalar) 
-# time_step::Float64 => Simulation time step (scalar) 
+# time_start::Float64 => Simulation start time value (scalar)
+# time_stop::Float64 => Simulation stop time value (scalar)
+# time_step::Float64 => Simulation time step (scalar)
 #
 # Output arguments:
-# data_dictionary::Dict{AbstractString,Any} => Dictionary holding model and simulation parameters as key => value pairs 
+# data_dictionary::Dict{AbstractString,Any} => Dictionary holding model and simulation parameters as key => value pairs
 # ----------------------------------------------------------------------------------- #
 function DataDictionary(time_start,time_stop,time_step)
 
-	# Load the stoichiometric network from disk - 
+	# Load the stoichiometric network from disk -
 	stoichiometric_matrix = readdlm("Network.dat");
 
-	# Setup default flux bounds array - 
+	# Setup default flux bounds array -
 	default_bounds_array = [
 		0	100.0	;	# 1 M_acald_c+M_coa_c+M_nad_c --> M_accoa_c+M_h_c+M_nadh_c
 		0	100.0	;	# 2 M_accoa_c+M_h_c+M_nadh_c --> M_acald_c+M_coa_c+M_nad_c
@@ -186,103 +351,104 @@ function DataDictionary(time_start,time_stop,time_step)
 		0	100.0	;	# 142 M_g3p_c --> M_dhap_c
 	];
 
-	# Setup default species bounds array - 
+	# Setup default species bounds array -
 	species_bounds_array = [
 		0.0	0.0	;	# 1 M_13dpg_c
 		0.0	0.0	;	# 2 M_2pg_c
 		0.0	0.0	;	# 3 M_3pg_c
 		0.0	0.0	;	# 4 M_6pgc_c
 		0.0	0.0	;	# 5 M_6pgl_c
-		0.0	0.0	;	# 6 M_ac_b
-		0.0	0.0	;	# 7 M_ac_c
-		0.0	0.0	;	# 8 M_acald_b
-		0.0	0.0	;	# 9 M_acald_c
+		0.0	0.0	;	# 6 M_ac_c
+		0.0	0.0	;	# 7 M_ac_e
+		0.0	0.0	;	# 8 M_acald_c
+		0.0	0.0	;	# 9 M_acald_e
 		0.0	0.0	;	# 10 M_accoa_c
 		0.0	0.0	;	# 11 M_acon_C_c
 		0.0	0.0	;	# 12 M_actp_c
 		0.0	0.0	;	# 13 M_adp_c
-		0.0	0.0	;	# 14 M_akg_b
-		0.0	0.0	;	# 15 M_akg_c
+		0.0	0.0	;	# 14 M_akg_c
+		0.0	0.0	;	# 15 M_akg_e
 		0.0	0.0	;	# 16 M_amp_c
 		0.0	0.0	;	# 17 M_atp_c
 		0.0	0.0	;	# 18 M_cit_c
-		0.0	0.0	;	# 19 M_co2_b
-		0.0	0.0	;	# 20 M_co2_c
+		0.0	0.0	;	# 19 M_co2_c
+		0.0	0.0	;	# 20 M_co2_e
 		0.0	0.0	;	# 21 M_coa_c
 		0.0	0.0	;	# 22 M_dhap_c
 		0.0	0.0	;	# 23 M_e4p_c
-		0.0	0.0	;	# 24 M_etoh_b
-		0.0	0.0	;	# 25 M_etoh_c
+		0.0	0.0	;	# 24 M_etoh_c
+		0.0	0.0	;	# 25 M_etoh_e
 		0.0	0.0	;	# 26 M_f6p_c
 		0.0	0.0	;	# 27 M_fdp_c
-		0.0	0.0	;	# 28 M_for_b
-		0.0	0.0	;	# 29 M_for_c
-		0.0	0.0	;	# 30 M_fru_b
-		0.0	0.0	;	# 31 M_fum_b
-		0.0	0.0	;	# 32 M_fum_c
+		0.0	0.0	;	# 28 M_for_c
+		0.0	0.0	;	# 29 M_for_e
+		0.0	0.0	;	# 30 M_fru_e
+		0.0	0.0	;	# 31 M_fum_c
+		0.0	0.0	;	# 32 M_fum_e
 		0.0	0.0	;	# 33 M_g3p_c
 		0.0	0.0	;	# 34 M_g6p_c
-		0.0	0.0	;	# 35 M_glc_D_b
-		0.0	0.0	;	# 36 M_gln_L_b
-		0.0	0.0	;	# 37 M_gln_L_c
-		0.0	0.0	;	# 38 M_glu_L_b
-		0.0	0.0	;	# 39 M_glu_L_c
+		0.0	0.0	;	# 35 M_glc_D_e
+		0.0	0.0	;	# 36 M_gln_L_c
+		0.0	0.0	;	# 37 M_gln_L_e
+		0.0	0.0	;	# 38 M_glu_L_c
+		0.0	0.0	;	# 39 M_glu_L_e
 		0.0	0.0	;	# 40 M_glx_c
-		0.0	0.0	;	# 41 M_h2o_b
-		0.0	0.0	;	# 42 M_h2o_c
-		0.0	0.0	;	# 43 M_h_b
-		0.0	0.0	;	# 44 M_h_c
+		0.0	0.0	;	# 41 M_h2o_c
+		0.0	0.0	;	# 42 M_h2o_e
+		0.0	0.0	;	# 43 M_h_c
+		0.0	0.0	;	# 44 M_h_e
 		0.0	0.0	;	# 45 M_icit_c
-		0.0	0.0	;	# 46 M_lac_D_b
-		0.0	0.0	;	# 47 M_lac_D_c
-		0.0	0.0	;	# 48 M_mal_L_b
-		0.0	0.0	;	# 49 M_mal_L_c
+		0.0	0.0	;	# 46 M_lac_D_c
+		0.0	0.0	;	# 47 M_lac_D_e
+		0.0	0.0	;	# 48 M_mal_L_c
+		0.0	0.0	;	# 49 M_mal_L_e
 		0.0	0.0	;	# 50 M_nad_c
 		0.0	0.0	;	# 51 M_nadh_c
 		0.0	0.0	;	# 52 M_nadp_c
 		0.0	0.0	;	# 53 M_nadph_c
-		0.0	0.0	;	# 54 M_nh4_b
-		0.0	0.0	;	# 55 M_nh4_c
-		0.0	0.0	;	# 56 M_o2_b
-		0.0	0.0	;	# 57 M_o2_c
+		0.0	0.0	;	# 54 M_nh4_c
+		0.0	0.0	;	# 55 M_nh4_e
+		0.0	0.0	;	# 56 M_o2_c
+		0.0	0.0	;	# 57 M_o2_e
 		0.0	0.0	;	# 58 M_oaa_c
 		0.0	0.0	;	# 59 M_pep_c
-		0.0	0.0	;	# 60 M_pi_b
-		0.0	0.0	;	# 61 M_pi_c
-		0.0	0.0	;	# 62 M_pyr_b
-		0.0	0.0	;	# 63 M_pyr_c
+		0.0	0.0	;	# 60 M_pi_c
+		0.0	0.0	;	# 61 M_pi_e
+		0.0	0.0	;	# 62 M_pyr_c
+		0.0	0.0	;	# 63 M_pyr_e
 		0.0	0.0	;	# 64 M_q8_c
 		0.0	0.0	;	# 65 M_q8h2_c
 		0.0	0.0	;	# 66 M_r5p_c
 		0.0	0.0	;	# 67 M_ru5p_D_c
 		0.0	0.0	;	# 68 M_s7p_c
-		0.0	0.0	;	# 69 M_succ_b
-		0.0	0.0	;	# 70 M_succ_c
+		0.0	0.0	;	# 69 M_succ_c
+		0.0	0.0	;	# 70 M_succ_e
 		0.0	0.0	;	# 71 M_succoa_c
 		0.0	0.0	;	# 72 M_xu5p_D_c
-		-1.0	1.0	;	# 73 M_ac_e
-		-1.0	1.0	;	# 74 M_acald_e
-		-1.0	1.0	;	# 75 M_akg_e
-		-1.0	1.0	;	# 76 M_co2_e
-		-1.0	1.0	;	# 77 M_etoh_e
-		-1.0	1.0	;	# 78 M_for_e
-		-1.0	1.0	;	# 79 M_fru_e
-		-1.0	1.0	;	# 80 M_fum_e
-		-1.0	1.0	;	# 81 M_glc_D_e
-		-1.0	1.0	;	# 82 M_gln_L_e
-		-1.0	1.0	;	# 83 M_glu_L_e
-		-1.0	1.0	;	# 84 M_h2o_e
-		-1.0	1.0	;	# 85 M_h_e
-		-1.0	1.0	;	# 86 M_lac_D_e
-		-1.0	1.0	;	# 87 M_mal_L_e
-		-1.0	1.0	;	# 88 M_nh4_e
-		-1.0	1.0	;	# 89 M_o2_e
-		-1.0	1.0	;	# 90 M_pi_e
-		-1.0	1.0	;	# 91 M_pyr_e
-		-1.0	1.0	;	# 92 M_succ_e
+
+		-1.0	1.0	;	# 73 M_ac_b
+		-1.0	1.0	;	# 74 M_acald_b
+		-1.0	1.0	;	# 75 M_akg_b
+		-1.0	1.0	;	# 76 M_co2_b
+		-1.0	1.0	;	# 77 M_etoh_b
+		-1.0	1.0	;	# 78 M_for_b
+		-1.0	1.0	;	# 79 M_fru_b
+		-1.0	1.0	;	# 80 M_fum_b
+		-1.0	1.0	;	# 81 M_glc_D_b
+		-1.0	1.0	;	# 82 M_gln_L_b
+		-1.0	1.0	;	# 83 M_glu_L_b
+		-1.0	1.0	;	# 84 M_h2o_b
+		-1.0	1.0	;	# 85 M_h_b
+		-1.0	1.0	;	# 86 M_lac_D_b
+		-1.0	1.0	;	# 87 M_mal_L_b
+		-1.0	1.0	;	# 88 M_nh4_b
+		-1.0	1.0	;	# 89 M_o2_b
+		-1.0	1.0	;	# 90 M_pi_b
+		-1.0	1.0	;	# 91 M_pyr_b
+		-1.0	1.0	;	# 92 M_succ_b
 	];
 
-	# Setup the objective coefficient array - 
+	# Setup the objective coefficient array -
 	objective_coefficient_array = [
 		0.0	;	# 1 R_ACALD::M_acald_c+M_coa_c+M_nad_c --> M_accoa_c+M_h_c+M_nadh_c
 		0.0	;	# 2 R_ACALD_reverse::M_accoa_c+M_h_c+M_nadh_c --> M_acald_c+M_coa_c+M_nad_c
@@ -428,10 +594,10 @@ function DataDictionary(time_start,time_stop,time_step)
 		0.0	;	# 142 R_TPI_reverse::M_g3p_c --> M_dhap_c
 	];
 
-	# Min/Max flag - default is minimum - 
+	# Min/Max flag - default is minimum -
 	is_minimum_flag = true
 
-	# List of reation strings - used to write flux report 
+	# List of reation strings - used to write flux report
 	list_of_reaction_strings = [
 		"R_ACALD::M_acald_c+M_coa_c+M_nad_c --> M_accoa_c+M_h_c+M_nadh_c"
 		"R_ACALD_reverse::M_accoa_c+M_h_c+M_nadh_c --> M_acald_c+M_coa_c+M_nad_c"
@@ -577,100 +743,100 @@ function DataDictionary(time_start,time_stop,time_step)
 		"R_TPI_reverse::M_g3p_c --> M_dhap_c"
 	];
 
-	# List of metabolite strings - used to write flux report 
+	# List of metabolite strings - used to write flux report
 	list_of_metabolite_symbols = [
 		"M_13dpg_c"
 		"M_2pg_c"
 		"M_3pg_c"
 		"M_6pgc_c"
 		"M_6pgl_c"
-		"M_ac_b"
 		"M_ac_c"
-		"M_acald_b"
+		"M_ac_e"
 		"M_acald_c"
+		"M_acald_e"
 		"M_accoa_c"
 		"M_acon_C_c"
 		"M_actp_c"
 		"M_adp_c"
-		"M_akg_b"
 		"M_akg_c"
+		"M_akg_e"
 		"M_amp_c"
 		"M_atp_c"
 		"M_cit_c"
-		"M_co2_b"
 		"M_co2_c"
+		"M_co2_e"
 		"M_coa_c"
 		"M_dhap_c"
 		"M_e4p_c"
-		"M_etoh_b"
 		"M_etoh_c"
+		"M_etoh_e"
 		"M_f6p_c"
 		"M_fdp_c"
-		"M_for_b"
 		"M_for_c"
-		"M_fru_b"
-		"M_fum_b"
+		"M_for_e"
+		"M_fru_e"
 		"M_fum_c"
+		"M_fum_e"
 		"M_g3p_c"
 		"M_g6p_c"
-		"M_glc_D_b"
-		"M_gln_L_b"
+		"M_glc_D_e"
 		"M_gln_L_c"
-		"M_glu_L_b"
+		"M_gln_L_e"
 		"M_glu_L_c"
+		"M_glu_L_e"
 		"M_glx_c"
-		"M_h2o_b"
 		"M_h2o_c"
-		"M_h_b"
+		"M_h2o_e"
 		"M_h_c"
+		"M_h_e"
 		"M_icit_c"
-		"M_lac_D_b"
 		"M_lac_D_c"
-		"M_mal_L_b"
+		"M_lac_D_e"
 		"M_mal_L_c"
+		"M_mal_L_e"
 		"M_nad_c"
 		"M_nadh_c"
 		"M_nadp_c"
 		"M_nadph_c"
-		"M_nh4_b"
 		"M_nh4_c"
-		"M_o2_b"
+		"M_nh4_e"
 		"M_o2_c"
+		"M_o2_e"
 		"M_oaa_c"
 		"M_pep_c"
-		"M_pi_b"
 		"M_pi_c"
-		"M_pyr_b"
+		"M_pi_e"
 		"M_pyr_c"
+		"M_pyr_e"
 		"M_q8_c"
 		"M_q8h2_c"
 		"M_r5p_c"
 		"M_ru5p_D_c"
 		"M_s7p_c"
-		"M_succ_b"
 		"M_succ_c"
+		"M_succ_e"
 		"M_succoa_c"
 		"M_xu5p_D_c"
-		"M_ac_e"
-		"M_acald_e"
-		"M_akg_e"
-		"M_co2_e"
-		"M_etoh_e"
-		"M_for_e"
-		"M_fru_e"
-		"M_fum_e"
-		"M_glc_D_e"
-		"M_gln_L_e"
-		"M_glu_L_e"
-		"M_h2o_e"
-		"M_h_e"
-		"M_lac_D_e"
-		"M_mal_L_e"
-		"M_nh4_e"
-		"M_o2_e"
-		"M_pi_e"
-		"M_pyr_e"
-		"M_succ_e"
+		"M_ac_b"
+		"M_acald_b"
+		"M_akg_b"
+		"M_co2_b"
+		"M_etoh_b"
+		"M_for_b"
+		"M_fru_b"
+		"M_fum_b"
+		"M_glc_D_b"
+		"M_gln_L_b"
+		"M_glu_L_b"
+		"M_h2o_b"
+		"M_h_b"
+		"M_lac_D_b"
+		"M_mal_L_b"
+		"M_nh4_b"
+		"M_o2_b"
+		"M_pi_b"
+		"M_pyr_b"
+		"M_succ_b"
 	];
 
 	# =============================== DO NOT EDIT BELOW THIS LINE ============================== #
