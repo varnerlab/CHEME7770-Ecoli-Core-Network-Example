@@ -187,10 +187,11 @@ function maximize_acetate_data_dictionary(time_start,time_stop,time_step)
 	return data_dictionary
 end
 
+
 # ----------------------------------------------------------------------------------- #
 # Function: DataDictionary
 # Description: Holds simulation and model parameters as key => value pairs in a Julia Dict()
-# Generated on: 2017-03-28T11:09:30.882
+# Generated on: 2017-03-28T20:56:07.386
 #
 # Input arguments:
 # time_start::Float64 => Simulation start time value (scalar)
@@ -425,7 +426,6 @@ function DataDictionary(time_start,time_stop,time_step)
 		0.0	0.0	;	# 70 M_succ_e
 		0.0	0.0	;	# 71 M_succoa_c
 		0.0	0.0	;	# 72 M_xu5p_D_c
-
 		-1.0	1.0	;	# 73 M_ac_b
 		-1.0	1.0	;	# 74 M_acald_b
 		-1.0	1.0	;	# 75 M_akg_b
