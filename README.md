@@ -1,7 +1,7 @@
 ## CHEME7770 *E.coli* Core Network Example
 This repository holds the flux balance analysis problem (FBA) for the *E.coli* network example from [Palsson laboratory](http://systemsbiology.ucsd.edu/Downloads/EcoliCore) and is described in [EcoSal Chapter 10.2.1 - Reconstruction and Use of Microbial Metabolic Networks: the Core Escherichia coli Metabolic Model as an Educational Guide by Orth, Fleming, and Palsson (2010)](http://www.asmscience.org/content/journal/ecosalplus/10.1128/ecosalplus.10.2.1#backarticlefulltext).
 
-The core *E.coli* network is a small-scale model that can by senior undergraduate and first-year graduate students learning about constraint-based modeling and systems biology. This model has enough reactions and pathways to enable interesting and insightful calculations, but it is also simple enough that the results of such calculations can be understood easily.
+The core *E.coli* network is a small-scale model that can by solved by a senior undergraduate and/or first-year graduate students learning about constraint-based modeling and systems biology. This model has enough reactions and pathways to enable interesting and insightful calculations, but it is also simple enough that the results of such calculations can be understood easily.
 
 ### Installation and Requirements
 You can download this repository as a zip file, or clone or pull it by using the command (from the command-line):
