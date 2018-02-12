@@ -17,7 +17,7 @@ data_dictionary = maximize_cellmass_data_dictionary(time_start,time_stop,time_st
 
 # Problem specific kinetic parameters -
 vmax_glucose_uptake = 10.5
-K_glucose_uptake = 36.0
+K_glucose_uptake = 8.0
 
 # initialize the problem -
 number_of_external_states = 3
@@ -26,7 +26,7 @@ state_array = zeros(number_of_timesteps,number_of_external_states)
 # set the ic -
 state_array[1,1] = 11.11   # 1 glucose
 state_array[1,2] = 0.5     # 2 acetate
-state_array[1,3] = 0.001   # 3 cellmass
+state_array[1,3] = 0.01   # 3 cellmass
 
 # capture the exit flags -
 exit_flag_array = Int[]
@@ -62,9 +62,9 @@ for time_step_index = 1:number_of_timesteps-1
   @show mu
 
   # update the external state -
-  state_array[time_step_index+1,1] = glucose -1.0*qGlc*cellmass
-  state_array[time_step_index+1,2] = acetate + qAcetate_production*cellmass
-  state_array[time_step_index+1,3] = cellmass + mu*cellmass
+  state_array[time_step_index+1,1] = glucose -1.0*qGlc*cellmass*time_step
+  state_array[time_step_index+1,2] = acetate + qAcetate_production*cellmass*time_step
+  state_array[time_step_index+1,3] = cellmass + mu*cellmass*time_step
 
   # correct negatives -
   idx_nz = find(state_array[time_step_index+1,:].<0)

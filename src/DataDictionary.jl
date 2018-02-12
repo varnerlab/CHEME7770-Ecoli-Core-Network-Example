@@ -54,11 +54,11 @@ function maximize_cellmass_data_dictionary(time_start,time_stop,time_step)
 		0.0	0.0	;	# 83 M_glu_L_b
 		-10.0	10.0	;	# 84 M_h2o_b
 		-100.0	100.0	;	# 85 M_h_b
-		0.0	0.0	;	# 86 M_lac_D_b
+		0.0	1.0	;	# 86 M_lac_D_b
 		0.0	0.0	;	# 87 M_mal_L_b
-		-10.0	10.0	;	# 88 M_nh4_b
-		-15.0	0.0	;	# 89 M_o2_b
-		-10.0	10.0	;	# 90 M_pi_b
+		-100.0	100.0	;	# 88 M_nh4_b
+		-20.0	0.0	;	# 89 M_o2_b
+		-100.0	100.0	;	# 90 M_pi_b
 		0.0	0.0	;	# 91 M_pyr_b
 		0.0	0.0	;	# 92 M_succ_b
 	]
@@ -97,24 +97,24 @@ function maximize_atp_data_dictionary(time_start,time_stop,time_step)
 	# setup exchange array -
 	species_bounds_array = data_dictionary["species_bounds_array"]
 	exchange_array = [
-		0.0	0.0	;	# 73 M_ac_b
-		0.0	0.0	;	# 74 M_acald_b
-		0.0	0.0	;	# 75 M_akg_b
+		0.0	1.0	;	# 73 M_ac_b
+		0.0	1.0	;	# 74 M_acald_b
+		0.0	1.0	;	# 75 M_akg_b
 		0.0	100.0	;	# 76 M_co2_b
-		0.0	0.0	;	# 77 M_etoh_b
+		0.0	1.0	;	# 77 M_etoh_b
 		0.0	1.0	;	# 78 M_for_b
 		0.0	1.0	;	# 79 M_fru_b
 		0.0	1.0	;	# 80 M_fum_b
-		-1.0	0.0	;	# 81 M_glc_D_b
+		0.0	0.0	;	# 81 M_glc_D_b
 		0.0	0.0	;	# 82 M_gln_L_b
 		0.0	0.0	;	# 83 M_glu_L_b
-		-1.0	1.0	;	# 84 M_h2o_b
-		-1.0	1.0	;	# 85 M_h_b
-		0.0	0.0	;	# 86 M_lac_D_b
+		-100.0	100.0	;	# 84 M_h2o_b
+		-100.0	100.0	;	# 85 M_h_b
+		0.0	1.0	;	# 86 M_lac_D_b
 		0.0	0.0	;	# 87 M_mal_L_b
-		-1.0	1.0	;	# 88 M_nh4_b
+		-100.0	100.0	;	# 88 M_nh4_b
 		-100.0	0.0	;	# 89 M_o2_b
-		-1.0	1.0	;	# 90 M_pi_b
+		-100.0	100.0	;	# 90 M_pi_b
 		0.0	0.0	;	# 91 M_pyr_b
 		0.0	0.0	;	# 92 M_succ_b
 	]
@@ -154,7 +154,7 @@ function maximize_acetate_data_dictionary(time_start,time_stop,time_step)
 		0.0	1.0	;	# 73 M_ac_b
 		0.0	0.0	;	# 74 M_acald_b
 		0.0	0.0	;	# 75 M_akg_b
-		0.0	1.0	;	# 76 M_co2_b
+		0.0	100.0	;	# 76 M_co2_b
 		0.0	0.0	;	# 77 M_etoh_b
 		0.0	1.0	;	# 78 M_for_b
 		0.0	1.0	;	# 79 M_fru_b
@@ -162,12 +162,12 @@ function maximize_acetate_data_dictionary(time_start,time_stop,time_step)
 		-1.0	0.0	;	# 81 M_glc_D_b
 		-1.0	0.0	;	# 82 M_gln_L_b
 		0.0	0.0	;	# 83 M_glu_L_b
-		-1.0	1.0	;	# 84 M_h2o_b
-		-1.0	1.0	;	# 85 M_h_b
-		0.0	0.0	;	# 86 M_lac_D_b
+		-10.0	10.0	;	# 84 M_h2o_b
+		-10.0	10.0	;	# 85 M_h_b
+		0.0	100.0	;	# 86 M_lac_D_b
 		0.0	0.0	;	# 87 M_mal_L_b
-		-1.0	1.0	;	# 88 M_nh4_b
-		-1.0	1.0	;	# 89 M_o2_b
+		-100.0	100.0	;	# 88 M_nh4_b
+		-100.0	1.0	;	# 89 M_o2_b
 		-1.0	1.0	;	# 90 M_pi_b
 		0.0	0.0	;	# 91 M_pyr_b
 		0.0	0.0	;	# 92 M_succ_b
@@ -390,7 +390,7 @@ function DataDictionary(time_start,time_stop,time_step)
 		0.0	0.0	;	# 31 M_fum_c
 		0.0	0.0	;	# 32 M_fum_e
 		0.0	0.0	;	# 33 M_g3p_c
-		0.0	0.0	;	# 34 M_g6p_c
+		-1.0	0.0	;	# 34 M_g6p_c
 		0.0	0.0	;	# 35 M_glc_D_e
 		0.0	0.0	;	# 36 M_gln_L_c
 		0.0	0.0	;	# 37 M_gln_L_e
